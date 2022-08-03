@@ -1,4 +1,4 @@
-<img src="https://i.pinimg.com/originals/95/2a/19/952a19c2caf958da2626e2dac8fdb189.jpg" width="10000" height="190">
+<img src="https://fastnetmon.com/wp-content/uploads/2016/08/python-logo.png">
 
 # 100 Days Of Code
 
