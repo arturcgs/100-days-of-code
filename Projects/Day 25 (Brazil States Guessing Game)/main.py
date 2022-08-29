@@ -8,31 +8,26 @@ screen = turtle.Screen()
 screen.title("Brazil's States Game")
 screen.tracer(0)
 
-# adding brackground
+# adding background
 image = "Brazil_Blank_Map.gif"
 screen.addshape(image)
 turtle.shape(image)
 screen.update()
-def get_mouse_coord(x, y):
-    print(x, y)
-
-turtle.onscreenclick(get_mouse_coord)
-
-
-
 
 # importing csv with states and their location
 df = pd.read_csv("brazil_states.csv", sep=";", encoding="UTF-8")
 df = df.set_index('state')
 df.index = df.index.str.lower()
 
-
-while True:
+correct_states = []
+game_is_on = True
+while game_is_on:
     screen.update()
     # getting users input
-    user_input = screen.textinput(title="wow", prompt="Write a state's name below:").lower().strip()
+    user_input = screen.textinput(title=f"{len(correct_states)}/27 States", prompt="Write a state's name below:\nWrite "
+                                                                                   "'Exit' to exit").lower().strip()
     # checking if state exists and hasn't already been guessed
-    if user_input in df.index:
+    if (user_input in df.index) and (user_input not in correct_states):
         # creating state name turtle
         state_name = turtle.Turtle()
         state_name.hideturtle()
@@ -43,16 +38,8 @@ while True:
         state_name.goto(x, y)
         # writing state name
         state_name.write(f"{user_input.title()}", align=ALIGNMENT, font=FONT)
-
-
-
-
-
-
-
-
-
-
-
-
-turtle.mainloop()
+        # adding to correct states list
+        correct_states.append(user_input)
+    # exit loop
+    elif user_input == 'exit':
+        game_is_on = False
