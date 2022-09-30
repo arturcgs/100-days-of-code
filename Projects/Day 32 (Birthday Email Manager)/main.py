@@ -1,2 +1,0 @@
-print("wow")
-print("Congrats!")

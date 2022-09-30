@@ -1,5 +1,6 @@
 import turtle
 import pandas as pd
+
 ALIGNMENT = "center"
 FONT = ("Courier", 8, "bold")
 
