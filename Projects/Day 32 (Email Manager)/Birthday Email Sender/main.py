@@ -11,7 +11,7 @@ def send_email(text, receiver_email):
     smtp_server = "smtp.gmail.com"
     port = 587
     sender_email = "100days.day32@gmail.com"
-    password = "tlfwgxoljllupscj"
+    password = "YOUR APP PASSWORDS HERE"
 
     with smtplib.SMTP(smtp_server, port=port) as connection:
         connection.starttls()

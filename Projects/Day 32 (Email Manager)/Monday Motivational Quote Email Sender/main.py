@@ -10,7 +10,7 @@ def send_email(text):
     smtp_server = "smtp.gmail.com"
     port = 587
     sender_email = "100days.day32@gmail.com"
-    password = "tlfwgxoljllupscj"
+    password = "YOUR APP PASSWORDS HERE"
     receiver_email = "arturcaminero@gmail.com"
 
     print("sending email")
