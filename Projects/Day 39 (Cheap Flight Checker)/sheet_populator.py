@@ -2,7 +2,7 @@ from FlightSearchAPI import FlightSearchAPI
 from SheetAPI import SheetAPI
 
 if __name__ == "__main__":
-    # intializing API objects
+    # initializing API objects
     flight_search = FlightSearchAPI()
     sheet = SheetAPI()
 

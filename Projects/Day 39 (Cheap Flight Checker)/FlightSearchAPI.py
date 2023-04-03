@@ -1,4 +1,5 @@
 import requests
+import os
 
 '''
 https://tequila.kiwi.com/portal/docs/tequila_api/locations_api
@@ -6,7 +7,7 @@ https://tequila.kiwi.com/portal/docs/tequila_api/locations_api
 
 class FlightSearchAPI:
     def __init__(self):
-        self._API_KEY = "22J-of63tb4JXjpUxnWIpqlvnam3SeHt"
+        self._API_KEY = os.getenv("FLIGHT_API")
         self._ENDPOINT = "https://api.tequila.kiwi.com"
         self._HEADERS = {
             "apikey": self._API_KEY

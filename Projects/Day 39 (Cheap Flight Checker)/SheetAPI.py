@@ -1,4 +1,5 @@
 import requests
+import os
 
 '''
 https://dashboard.sheety.co/
@@ -6,7 +7,7 @@ https://dashboard.sheety.co/
 
 class SheetAPI:
     def __init__(self):
-        self._API_KEY = "Batata12!"
+        self._API_KEY = os.getenv("SHEET_API")
         self._ENDPOINT = "https://api.sheety.co/3c2d93ee6776adea1ee6c8610b831960/flightDeals/prices"
         self._HEADERS = {
             "Authorization": f"Bearer {self._API_KEY}"
