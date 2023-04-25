@@ -1,0 +1,34 @@
+/* ================= TAG SELECTORS ================= */
+
+body {
+    background-color: #EAF6F6;
+}
+
+hr {
+    background-color: #EAF6F6;
+    border-style: none;
+    border-top: 5px grey dotted;
+    width: 10%;
+}
+
+
+/* ================= CLASS SELECTORS ================= */
+
+.title {
+    font-weight: 900;
+    font-size: 40;
+    color: #66BFBF;
+    padding-bottom: 0px;
+}
+
+.subtitle {
+    color: #66BFBF;
+}
+
+.title:hover {
+    letter-spacing: 4px;
+}
+
+#batata {
+    color: red;
+}
