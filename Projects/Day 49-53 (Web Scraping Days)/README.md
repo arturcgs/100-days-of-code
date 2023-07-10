@@ -1,0 +1,3 @@
+# Web Scraping Exercises
+
+The webscraping exercises are very interesting, but as they require to sing up to several different websites, and are also not a very interesting topic to me, I will skip theses days. I have learned the basics of beautiful soup and selenium, but I won't continue with all of the exercises. I will jump now to day 54, which starts to talk about flask and back-end development.
