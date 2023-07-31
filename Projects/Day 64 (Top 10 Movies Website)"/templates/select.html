@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Movie{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="heading">Select Movie</h1>
+  {% for movie in movies_list %}
+  <p>
+    <a href="{{ url_for('add_to_sql', tmdb_id=movie['id']) }}"> {{ movie["title"] }} - {{ movie["release_date"][0:4] }}</a>
+  </p>
+  {% endfor %}
+
+</div>
+{% endblock %}

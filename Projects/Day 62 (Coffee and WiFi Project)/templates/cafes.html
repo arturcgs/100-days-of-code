@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+
+	  <table class="table table-dark table-striped table-hover">
+
+          <thead>
+              <tr>
+                  {% for column_name in cafes[0] %}
+                  <th scope="col">{{ column_name }}</th>
+                  {% endfor %}
+              </tr>
+          </thead>
+
+          <tbody>
+              {% for row in cafes[1:] %}
+              <tr>
+                  {% for content in row %}
+                    {% if "https://goo.gl/maps/" in content %}
+                        <td><a href="{{ content }}">Maps Link</a></td>
+                    {% else %}
+                        <td>{{ content }}</td>
+                    {% endif %}
+                  {% endfor %}
+              </tr>
+              {% endfor %}
+          </tbody>
+
+
+
+  	  </table>
+
+      <p><a href="{{ url_for('home') }}">Return to index page</a></p>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

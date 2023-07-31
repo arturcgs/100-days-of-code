@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Book</title>
+  </head>
+  <body>
+
+    <ul>
+        <li>
+            Book name: {{ book_data.title }}
+        </li>
+        <li>
+            Book author: {{ book_data.author }}
+        </li>
+        <li>
+            Current Rating: {{ book_data.rating }}
+        </li>
+    </ul>
+
+    <form action="{{ url_for('edit', book_id=book_data.id) }}" method="POST">
+      <label>New Rating: </label>
+      <input type="text" name="new_rating" />
+      <button type="submit">Update Rating</button>
+    </form>
+
+  </body>
+</html>
