@@ -7,7 +7,7 @@ from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditor, CKEditorField
 from datetime import date
 
-# flask app and bootstrap
+# flask app, bootstrap and ckeditor
 app = Flask(__name__)
 ckeditor = CKEditor(app)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
