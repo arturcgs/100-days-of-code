@@ -1,0 +1,1 @@
+I have already taken a course focused on Data Science, you can find my notebook [here](https://github.com/arturcgs/bootcamp-data-science-aplicada3/tree/main/Projeto%20Final)
