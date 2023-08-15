@@ -1,0 +1,26 @@
+How to calculate typing speed:
+
+GROSS WPM:
+
+Number of characters typed in a minute (with no typos), divided by five.
+
+A word is any five characters. Spaces, punctuations, numbers, are all included.
+
+NET WPM:
+
+Gross WPM - (Uncorrected Error / Time)
+
+Accuracy:
+
+Percentage of correct entries
+
+Correct entries / Total entries * 100
+
+
+Program Idea:
+
+A screen shows up, with the options to start or exit
+This screen can show the best time (maybe)
+
+If you start, a new window will show up, with a text and a input place.
+After 2 minutes, the window closes, and the main screen now shows the score that you got (and maybe the best score)
