@@ -1,4 +1,5 @@
 import tkinter as tk
+from random import choice
 
 END = "end"
 
@@ -9,9 +10,13 @@ def start_test():
     test_screen.title("Test")
     test_screen.geometry("500x500")
 
+    # choose random phrase
+    with open('test_phrases.txt') as f:
+        phrases = [line.rstrip('\n') for line in f]
+    test_text_raw = choice(phrases)
+
     # widgets
     # test text
-    test_text_raw = "In a bustling city, diverse lives intertwine. Dreams take flight, and challenges emerge. Through connections and resilience, each person navigates a unique journey, adding their chapter to the vibrant urban tapestry."
     test_text = add_break_line_to_text(test_text_raw)
     test_text_label = tk.Label(test_screen, text=test_text, font=("Arial", 24, "bold"), pady=20)
     test_text_label.pack()
@@ -23,46 +28,42 @@ def start_test():
 
     # finish test
     test_screen.after(
-        12000,
+        20000,
         lambda: finish_test(screen=test_screen, test_text=test_text_raw.lower(), typed_text=type_test.get("1.0", END).lower())
     )
 
 
 def finish_test(screen: tk.Toplevel, test_text: str, typed_text: str):
     wpm, accuracy = calculate_wpm(test_text, typed_text)
-    wpm_value["text"] = wpm
+    wpm_value["text"] = f"{wpm:.2f}"
     accuracy_value["text"] = f"{accuracy:.2f}%"
     screen.destroy()
 
 
 def calculate_wpm(test_text: str, typed_text: str):
-    # select smallest string
-    smallest_text = min(test_text, typed_text, key=len)
+    # separate words
+    test_text_words = test_text.split()
+    typed_text_words = typed_text.split()
 
-    # select only the length of the smallest string, from the test text
-    print(f"smallest text = {smallest_text} - {len(smallest_text)}")
-    print(f"test text before - {test_text} = {len(test_text)}")
-    limit = len(smallest_text)
-    test_text = test_text[:limit]
-    print(f"test text after - {test_text} = {len(test_text)}")
+    # select smallest list
+    smallest_text = min(test_text_words, typed_text_words, key=len)
 
     # count correct chars
     correct_chars = 0
-    for index in range(len(smallest_text)):
-        if test_text[index] == typed_text[index]:
-            correct_chars += 1
-    incorrect_chars = len(test_text) - correct_chars
-
-
-    print(f"correct chars = {correct_chars}")
-    print(f"incorrect chars = {incorrect_chars}")
+    total_chars = 0
+    for test_word, typed_word in zip(test_text_words, typed_text_words):
+        total_chars += len(typed_word)
+        for test_letter, typed_letter in zip(test_word, typed_word):
+            if test_letter == typed_letter:
+                correct_chars += 1
+    incorrect_chars = total_chars - correct_chars
 
     # calculate parameters
-    gross_wpm = correct_chars / 5
-    net_wpm = gross_wpm - (incorrect_chars / 2)
+    gross_wpm = correct_chars / 5 * 3
+    net_wpm = gross_wpm - (incorrect_chars * 3)
     if net_wpm < 0:
         net_wpm = 0
-    accuracy = correct_chars / len(test_text) * 100
+    accuracy = correct_chars / total_chars * 100
 
     return net_wpm, accuracy
 
@@ -95,7 +96,7 @@ title_label = tk.Label(text="Welcome to the Speed Typing Tester", font=("Arial",
 title_label.grid(row=0, column=0, columnspan=2)
 
 # instructions
-instructions_label = tk.Label(text='Click "Start test" to take your test\n(it takes 2 minutes)', font=("Arial", 26, "bold"), pady=20)
+instructions_label = tk.Label(text='Click "Start test" to take your test', font=("Arial", 26, "bold"), pady=20)
 instructions_label.grid(row=1, column=0, columnspan=2)
 
 # Current Score
